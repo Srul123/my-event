@@ -1,0 +1,61 @@
+{
+  "guests": [
+    {
+      "id": 2,
+      "firstName": "ענבל",
+      "lastName": "הייבלום",
+      "phoneNumber": "0506803868",
+      "groupName": "ללא קבוצה",
+      "classification": "ללא",
+      "email": "inbal@gmail.com",
+      "comment": "אחלה שבנשים",
+      "attention": true,
+      "created": "2019-05-31T16:18:04.245Z",
+      "lastEdited": "2019-12-26T19:06:48.681Z"
+    },
+    {
+      "id": 3,
+      "firstName": "לאו",
+      "lastName": "איגל",
+      "phoneNumber": "0525322167",
+      "groupName": "ללא קבוצה",
+      "email": "srul@gmail.com",
+      "comment": "אחלה שבגברים",
+      "attention": false,
+      "created": "2019-05-31T15:46:10.179Z",
+      "lastEdited": "2019-12-26T19:06:26.795Z"
+    },
+    {
+      "firstName": "Israel",
+      "lastName": "Heiblum",
+      "phoneNumber": "",
+      "groupName": "קבוצה3",
+      "classification": "כלה",
+      "email": "ih5938133@gmail.com",
+      "comment": "עגכעדגכגד",
+      "attention": true,
+      "created": "2019-12-26T19:37:58.968Z",
+      "id": 5
+    }
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "name": "ללא קבוצה",
+      "attention": false,
+      "created": "2019-05-31T16:18:04.245Z"
+    },
+    {
+      "name": "בדיקה1",
+      "attention": false,
+      "created": "2019-05-31T16:18:04.245Z",
+      "id": 2
+    },
+    {
+      "name": "בדיקה2",
+      "attention": false,
+      "created": "2019-05-31T16:18:04.245Z",
+      "id": 3
+    }
+  ]
+}
