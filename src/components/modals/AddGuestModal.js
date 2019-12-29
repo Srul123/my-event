@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import PropTypes from "prop-types";
-import { addGuest } from "../../../../../actions/guestActions";
+import { addGuest } from "../../actions/guestActions";
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
@@ -91,18 +91,16 @@ const AddGroupModal = ({ addGuest }) => {
         </div>
 
         <div className="row">
-          <div className="input-field">
+          <div  className="input-field">
             <input
               className="validate"
               id="email"
               type="email"
               name="email"
+              placeholder="אימייל"
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
-            <label htmlFor="email" className="active">
-              אימייל{" "}
-            </label>
           </div>
         </div>
 

@@ -1,9 +1,9 @@
 import React, { useEffect, Fragment } from "react";
 import {connect} from 'react-redux';
-import GuestItem from "../guest/GuestItem/GuestItem";
-import Preloader from "../../../layout/Preloader";
-import {getGuests} from '../../../../actions/guestActions';
-import SearchBar from "../../../layout/SearchBar";
+import GuestItem from "../guest/GuestItem";
+import Preloader from "../layout/Preloader";
+import {getGuests} from '../../actions/guestActions';
+import SearchBar from "../layout/SearchBar";
 
 
 import PropTypes from 'prop-types';

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import GrouptItem from "../group/GroupItem/GrouptItem";
-import Preloader from "../../../layout/Preloader";
+import GrouptItem from "../group/GrouptItem";
+import Preloader from "../layout/Preloader";
 
 
 const ListGroups = () => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { updateGuest, setCurrent } from "../../../../../actions/guestActions";
+import { updateGuest, setCurrent } from "../../actions/guestActions";
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
@@ -94,7 +94,7 @@ const EditGuestModal = ({ current, updateGuest }) => {
         <div className="row">
           <div className="input-field">
             <input
-              className=""
+              className="validate"
               id="email-edit"
               type="email"
               name="email"

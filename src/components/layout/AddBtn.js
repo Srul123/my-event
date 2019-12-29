@@ -9,7 +9,7 @@ const AddBtn = () => {
       >
         <i className="large material-icons">add</i>
       </a>
-      <ul>
+      <ul style={{paddingLeft:"6vw", paddingRight:"2vw"}}>
         <li>
           <a
             href="#add-guest-modal"

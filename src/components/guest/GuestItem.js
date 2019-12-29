@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {deleteGuest, setCurrent} from '../../../../../actions/guestActions'
+import {deleteGuest, setCurrent} from '../../actions/guestActions'
 import M from "materialize-css/dist/js/materialize.min.js";
 
 
