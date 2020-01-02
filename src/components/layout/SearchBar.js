@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { searchGuests } from "../../actions/guestActions";
+import { searchGuests } from "../../redux/actions/guestActions";
 
 import "./SearchBar.scss";
 
@@ -27,7 +27,6 @@ const SearchBar = ({ searchGuests }) => {
             <label className="label-icon" htmlFor="search">
               <i className="material-icons">search</i>
             </label>
-            <i className="material-icons">close</i>
           </div>
         </form>
       </div>

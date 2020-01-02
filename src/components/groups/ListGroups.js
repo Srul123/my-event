@@ -1,43 +1,38 @@
 import React, { useEffect, useState } from "react";
-import GrouptItem from "../group/GrouptItem";
-import Preloader from "../layout/Preloader";
+import { connect } from "react-redux";
+import { getGroups } from "../../redux/actions/groupActions";
+import Preloader from "../../components/layout/Preloader";
+import GroupItem from "../group/GroupItem";
 
-
-const ListGroups = () => {
-  const [groups, setGroups] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+const ListGroups = ({ group: { groups, loading }, getGroups }) => {
   useEffect(() => {
     getGroups();
     //eslint-disable-next-line
   }, []);
-
-  const getGroups = async () => {
-    setLoading(true);
-    const res = await fetch("/groups");
-    const data = await res.json();
-
-    setGroups(data);
-    setLoading(false);
-  };
 
   if (loading) {
     return <Preloader />;
   }
 
   return (
-    <ul className="collection with-header get_guests">
-      <li className="collection-header">
-        <h4 className="center">הקבוצות שלי </h4>
-      </li>
-      {!loading && groups.length === 0 ? (
-        <p className="center"> התחל להוסיף קבוצות</p>
-      ) : (
-        groups.map(group => <GrouptItem group={group} key={group.id} />)
-      )}
-    </ul>
+    <div>
+      <ul className="collection with-header get_guests">
+        <li className="collection-header">
+          <h4 className="center"> כל הקבוצות </h4>
+        </li>
+        {!loading &&
+          groups !== null &&
+          groups.map(group => <GroupItem group={group} key={group.id} />)}
+      </ul>
+    </div>
   );
 };
 
-export default ListGroups;
+const mapStateToProps = state => ({
+  group: state.group
+});
 
+
+
+
+export default connect(mapStateToProps, { getGroups })(ListGroups);

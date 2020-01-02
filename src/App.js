@@ -3,7 +3,7 @@ import Navbar from "./components/layout/Navbar";
 import MyListGuests from "./pages/MyListGuests";
 
 import { Provider } from "react-redux";
-import store from "./store";
+import store from "./redux/store";
 
 import { useTranslation } from "react-i18next";
 
@@ -29,14 +29,14 @@ const App = () => {
         <div className="container">
           <MyListGuests />
         </div>
-        <nav>
+        {/* <nav>
           <button onClick={() => handleClick("he")}>עברית</button>
           <button onClick={() => handleClick("en")}>English</button>
         </nav>
         <header className="App-header">
           <p>{t("thanks.1")}</p>
           <p>{t("why.1")}</p>
-        </header>
+        </header> */}
       </Fragment>
     </Provider>
   );

@@ -11,4 +11,5 @@ export const SEARCH_GUESTS = "SEARCH_GUESTS";
 export const GET_GROUPS = "GET_GROUPS";
 export const ADD_GROUP = "ADD_GROUP";
 export const DELETE_GROUP = "DELETE_GROUP";
+export const UPDATE_GROUP = "UPDATE_GROUP";
 export const GROUPS_ERROR = "GROUPS_ERROR";

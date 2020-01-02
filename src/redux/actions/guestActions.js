@@ -1,5 +1,4 @@
 import {
-  GET_GROUPS,
   ADD_GUEST,
   SET_LOADING,
   GUESTS_ERROR,

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import PropTypes from "prop-types";
-import { addGuest } from "../../actions/guestActions";
+import { addGuest } from "../../redux/actions/guestActions";
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
@@ -18,12 +18,11 @@ const AddGroupModal = ({ addGuest }) => {
 
   const onSubmit = () => {
     if (firstName === "" || lastName === "") {
-      M.toast({
+      return M.toast({
         html: "אנא הכנס שם מלא",
         classes: "red"
       });
     } else {
-     
       const newGuest = {
         firstName,
         lastName,
@@ -36,13 +35,16 @@ const AddGroupModal = ({ addGuest }) => {
         created: new Date()
       };
 
-      if (newGuest.groupName==="") {
-        newGuest.groupName = "ללא קבוצה"
+      if (newGuest.groupName === "") {
+        newGuest.groupName = "ללא קבוצה";
       }
 
       addGuest(newGuest);
 
-      M.toast({ html: `המוזמן ${newGuest.firstName} נוסף בהצלחה`, classes: "green" });
+      M.toast({
+        html: `המוזמן ${newGuest.firstName} נוסף בהצלחה`,
+        classes: "green"
+      });
 
       // Clear Fields
       setFirstName("");
@@ -63,15 +65,13 @@ const AddGroupModal = ({ addGuest }) => {
           <div className="input-field">
             <input
               id="firstName"
-              type="text"
               className="validate"
+              type="text"
               name="firstName"
               value={firstName}
               onChange={e => setFirstName(e.target.value)}
             />
-            <label htmlFor="firstName" className="active">
-              שם פרטי{" "}
-            </label>
+            <label htmlFor="firstName">שם פרטי </label>
           </div>
         </div>
         <div className="row">
@@ -84,23 +84,21 @@ const AddGroupModal = ({ addGuest }) => {
               value={lastName}
               onChange={e => setLastName(e.target.value)}
             />
-            <label htmlFor="lastName" className="active">
-              שם משפחה{" "}
-            </label>
+            <label htmlFor="lastName">שם משפחה </label>
           </div>
         </div>
 
         <div className="row">
-          <div  className="input-field">
+          <div className="input-field">
             <input
-              className="validate"
               id="email"
+              className="validate"
               type="email"
               name="email"
-              placeholder="אימייל"
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
+            <label htmlFor="email">אימייל </label>
           </div>
         </div>
 
@@ -174,8 +172,9 @@ const AddGroupModal = ({ addGuest }) => {
       </div>
       <div className="modal-footer">
         <a
+        id="submit"
           href="#!"
-          className="modal-close waves-effect blue waves-light btn"
+          className={"waves-effect blue waves-light btn" }
           onClick={onSubmit}
         >
           הכנס
@@ -193,8 +192,5 @@ const modalStyle = {
   width: "60%",
   height: "75%"
 };
-
-
-
 
 export default connect(null, { addGuest })(AddGroupModal);

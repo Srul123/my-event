@@ -1,9 +1,12 @@
 import React, { useState, Fragment } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getGroups } from "../../redux/actions/groupActions";
 // import PropTypes from "./node_modules/prop-types";
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const AddGroupModal = () => {
+const AddGroupModal = ({ getGroups }) => {
   const [groupName, setGroupName] = useState("");
 
   const onSubmit = () => {
@@ -40,9 +43,7 @@ const AddGroupModal = () => {
               value={groupName}
               onChange={e => setGroupName(e.target.value)}
             />
-            <label htmlFor="groupName" className="active">
-              שם הקבוצה{" "}
-            </label>
+            <label htmlFor="groupName">שם הקבוצה </label>
           </div>
         </div>
         <div className="modal-footer">
@@ -63,4 +64,7 @@ const AddGroupModal = () => {
 //   addLog: PropTypes.func.isRequired
 // };
 
-export default AddGroupModal;
+
+
+export default connect(null, { getGroups })(AddGroupModal);
+

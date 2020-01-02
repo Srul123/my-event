@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { updateGuest, setCurrent } from "../../actions/guestActions";
+import { updateGuest, setCurrent } from "../../redux/actions/guestActions";
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
@@ -63,48 +63,55 @@ const EditGuestModal = ({ current, updateGuest }) => {
             <input
               id="firstName-edit"
               type="text"
-              className="validate"
               name="firstName"
               value={firstName}
               onChange={e => setFirstName(e.target.value)}
-              placeholder=""
             />
-            <label htmlFor="firstName" className="active">
-              שם פרטי{" "}
-            </label>
           </div>
         </div>
         <div className="row">
           <div className="input-field">
             <input
               id="lastName-edit"
-              className="validate"
               type="text"
+              className="validate"
               name="lastName"
               value={lastName}
               onChange={e => setLastName(e.target.value)}
-              placeholder=""
             />
-            <label htmlFor="lastName" className="active">
-              שם משפחה{" "}
-            </label>
+            {(() => {
+              if (current) {
+                return (
+                  <label
+                    htmlFor="lastName"
+                    className={(() => {
+                      if (current.lastName) {
+                        return "active";
+                      } else {
+                        return "";
+                      }
+                    })()}
+                  >
+                    שם משפחה
+                  </label>
+                );
+              } else {
+                return null
+              }
+            })()}
           </div>
         </div>
 
         <div className="row">
           <div className="input-field">
             <input
-              className="validate"
               id="email-edit"
               type="email"
               name="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              placeholder=""
+              placeholder="אימייל"
             />
-            <label htmlFor="email" className="">
-              אימייל{" "}
-            </label>
           </div>
         </div>
 
@@ -151,12 +158,10 @@ const EditGuestModal = ({ current, updateGuest }) => {
               id="comment-edit"
               type="text"
               data-length="10"
-              className="validate"
-              placeholder=""
+              placeholder="הערות"
               value={comment}
               onChange={e => setComment(e.target.value)}
             />
-            <label htmlFor="input_text">הערות</label>
           </div>
         </div>
 
