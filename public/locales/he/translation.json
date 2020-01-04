@@ -1,8 +1,50 @@
 {
-    "thanks": {
-        "1": "שרול המלך"
+  "searchBar": {
+    "searchGuests": "חפש מוזמנים..."
+  },
+  "navBar": {
+    "myGuestList": "רשימת המוזמנים שלי",
+    "myRSVPList": "אישורי ההגעה שלי",
+    "mySeatingList": "סידורי ההושבה שלי",
+    "lang": "שפות"
+  },
+  "guests": {
+    "myGuests": "המוזמנים שלי",
+    "noGuests": " אין מוזמנים להצגה"
+  },
+  "guest": {
+    "group": "קבוצה",
+    "tableNum": "מספר שולחן",
+    "DFL": "נמחק מהרשימה",
+    "guest": "המוזמן",
+    "addGuest": "הכנס מוזמן חדש",
+    "firstName": "שם פרטי",
+    "lastName": "שם משפחה",
+    "email": "אימייל",
+    "groupChoice": "בחר קבוצה",
+    "guestClass": {
+      "class": "של מי האורח",
+      "mutual": "משותף",
+      "groom": "צד החתן",
+      "bride": "צד הכלה"
     },
-    "why": {
-        "1": "כי ככה!!!"
-    }
+    "comments": "הערות",
+    "attension": "דרושה התייחסות",
+    "success": "נוסף בהצלחה",
+    "noGroup": "ללא קבוצה",
+    "alert": "אנא הכנס שם מלא",
+    "alertSuccess": "הפעולה הצליחה",
+    "enterGuest": "הכנס מוזמן",
+    "editGuest": "ערוך מוזמן"
+  },
+  "group": {
+    "groupName": "שם הקבוצה",
+    "enterGroup": "הכנס קבוצה",
+    "alert": "אנא הכנס שם לקבוצה",
+    "success": "נוסף בהצלחה",
+    "deleted": "נמחקה מהרשימה"
+  },
+  "groups": {
+    "groups": "כל הקבוצות"
+  }
 }

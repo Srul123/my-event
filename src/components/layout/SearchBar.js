@@ -2,10 +2,12 @@ import React, { useRef } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { searchGuests } from "../../redux/actions/guestActions";
-
+import { useTranslation } from "react-i18next";
 import "./SearchBar.scss";
 
 const SearchBar = ({ searchGuests }) => {
+  const { t, i18n } = useTranslation();
+
   const text = useRef("");
 
   const onChange = e => {
@@ -13,14 +15,14 @@ const SearchBar = ({ searchGuests }) => {
   };
 
   return (
-    <nav id="nav" style={{ marginBottom: "30px" }} className="blue" >
+    <nav id="nav" style={{ marginBottom: "30px" }} className="blue">
       <div className="nav-wrapper">
         <form>
           <div className="input-field">
             <input
               id="search"
               type="search"
-              placeholder="חפש מוזמנים..."
+              placeholder={`${t("searchBar.searchGuests")}`}
               ref={text}
               onChange={onChange}
             />

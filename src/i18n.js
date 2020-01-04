@@ -24,7 +24,7 @@ i18n
     fallbackLng: "he",
     debug: true,
     whitelist: Languages,
-    lng:"he",
+    lng: "he",
 
     interpolation: {
       escapeValue: false // not needed for react as it escapes by default

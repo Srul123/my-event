@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { updateGuest, setCurrent } from "../../redux/actions/guestActions";
+import { useTranslation } from "react-i18next";
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
 const EditGuestModal = ({ current, updateGuest }) => {
+  const { t, i18n } = useTranslation();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -31,7 +34,8 @@ const EditGuestModal = ({ current, updateGuest }) => {
   const onSubmit = () => {
     if (firstName === "" || lastName === "") {
       M.toast({
-        html: "אנא הכנס שם מלא"
+        html: `${t("guest.alert")}`,
+        classes: "red"
       });
     } else {
       const editGuest = {
@@ -50,14 +54,17 @@ const EditGuestModal = ({ current, updateGuest }) => {
 
       updateGuest(editGuest);
 
-      M.toast({ html: ` הפעולה הצליחה `, classes: "green" });
+      M.toast({
+        html: `${t("guest.alertSuccess")}`,
+        classes: "green"
+      });
       
     }
   };
   return (
     <div id="edit-guest-modal" className="modal" style={modalStyle}>
       <div className="modal-content">
-        <h4> ערוך מוזמן </h4>
+        <h4> {t("guest.editGuest")} </h4>
         <div className="row">
           <div className="input-field">
             <input
@@ -92,11 +99,11 @@ const EditGuestModal = ({ current, updateGuest }) => {
                       }
                     })()}
                   >
-                    שם משפחה
+                    {t("guest.lastName")}
                   </label>
                 );
               } else {
-                return null
+                return null;
               }
             })()}
           </div>
@@ -110,7 +117,7 @@ const EditGuestModal = ({ current, updateGuest }) => {
               name="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              placeholder="אימייל"
+              placeholder={t("guest.email")}
             />
           </div>
         </div>
@@ -124,7 +131,7 @@ const EditGuestModal = ({ current, updateGuest }) => {
               onChange={e => setGroupName(e.target.value)}
             >
               <option value="" disabled>
-                בחר קבוצה
+                {t("guest.groupChoice")}
               </option>
               <option value="קבוצה1">קבוצה1</option>
               <option value="קבוצה2">קבוצה2</option>
@@ -143,11 +150,11 @@ const EditGuestModal = ({ current, updateGuest }) => {
               onChange={e => setClassification(e.target.value)}
             >
               <option value="" disabled>
-                של מי האורח
+                {t("guest.guestClass.class")}
               </option>
-              <option value="ללא">ללא</option>
-              <option value="חתן">חתן</option>
-              <option value="כלה">כלה</option>
+              <option value="0">{t("guest.guestClass.mutual")}</option>
+              <option value="1">{t("guest.guestClass.groom")}</option>
+              <option value="2">{t("guest.guestClass.bride")}</option>
               {/* <TechSelectOptions /> */}
             </select>
           </div>
@@ -158,7 +165,7 @@ const EditGuestModal = ({ current, updateGuest }) => {
               id="comment-edit"
               type="text"
               data-length="10"
-              placeholder="הערות"
+              placeholder={t("guest.comments")}
               value={comment}
               onChange={e => setComment(e.target.value)}
             />
@@ -176,7 +183,7 @@ const EditGuestModal = ({ current, updateGuest }) => {
                   value={attention}
                   onChange={e => setAttention(!attention)}
                 />
-                <span>דרושה התייחסות</span>
+                <span>{t("guest.attension")}</span>
               </label>
             </p>
           </div>
@@ -188,7 +195,7 @@ const EditGuestModal = ({ current, updateGuest }) => {
           className="modal-close waves-effect blue waves-light btn"
           onClick={onSubmit}
         >
-          ערוך
+          {t("guest.editGuest")}
         </a>
       </div>
     </div>

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import {  addGroup } from "../../redux/actions/groupActions";
+import { addGroup } from "../../redux/actions/groupActions";
 import M from "materialize-css/dist/js/materialize.min.js";
+import { useTranslation } from "react-i18next";
 
-const AddGroup = ({addGroup}) => {
+const AddGroup = ({ addGroup }) => {
+  const { t, i18n } = useTranslation();
+
   const [groupName, setGroupName] = useState("");
 
   const onSubmit = () => {
     if (groupName === "") {
       M.toast({
-        html: "אנא הכנס שם לקבוצה"
+        html: `${t("group.alert")}`
       });
     } else {
       const newGroup = {
@@ -20,7 +23,10 @@ const AddGroup = ({addGroup}) => {
 
       addGroup(newGroup);
 
-      M.toast({ html: `נוסף בהצלחה ${newGroup.name}` });
+      M.toast({
+        html: ` ${newGroup.name} ${t("group.success")}`,
+        classes: "green"
+      });
 
       // Clear Fields
       setGroupName("");
@@ -40,7 +46,7 @@ const AddGroup = ({addGroup}) => {
                 value={groupName}
                 onChange={e => setGroupName(e.target.value)}
               />
-              <label htmlFor="groupName">שם הקבוצה </label>
+              <label htmlFor="groupName">{t("group.groupName")} </label>
             </div>
           </div>
         </li>
@@ -52,7 +58,7 @@ const AddGroup = ({addGroup}) => {
               className="waves-effect blue waves-light btn"
               onClick={onSubmit}
             >
-              הכנס
+              {t("group.enterGroup")}
             </a>
           </div>
         </li>
@@ -61,6 +67,4 @@ const AddGroup = ({addGroup}) => {
   );
 };
 
-export default connect(null, {  addGroup })(
-  AddGroup
-);
+export default connect(null, { addGroup })(AddGroup);

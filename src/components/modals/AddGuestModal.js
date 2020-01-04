@@ -3,10 +3,15 @@ import { connect } from "react-redux";
 
 import PropTypes from "prop-types";
 import { addGuest } from "../../redux/actions/guestActions";
+import { useTranslation } from "react-i18next";
+
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
 const AddGroupModal = ({ addGuest }) => {
+
+  const { t, i18n } = useTranslation();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -19,7 +24,7 @@ const AddGroupModal = ({ addGuest }) => {
   const onSubmit = () => {
     if (firstName === "" || lastName === "") {
       return M.toast({
-        html: "אנא הכנס שם מלא",
+        html: `${t("guest.alert")}`,
         classes: "red"
       });
     } else {
@@ -36,13 +41,13 @@ const AddGroupModal = ({ addGuest }) => {
       };
 
       if (newGuest.groupName === "") {
-        newGuest.groupName = "ללא קבוצה";
+        newGuest.groupName = `${t("guest.noGroup")}`;
       }
 
       addGuest(newGuest);
 
       M.toast({
-        html: `המוזמן ${newGuest.firstName} נוסף בהצלחה`,
+        html: `${t("guest.guest")} ${newGuest.firstName} ${t("guest.success")}`,
         classes: "green"
       });
 
@@ -60,7 +65,7 @@ const AddGroupModal = ({ addGuest }) => {
   return (
     <div id="add-guest-modal" className="modal" style={modalStyle}>
       <div className="modal-content">
-        <h4>הכנס מוזמן חדש</h4>
+        <h4> {t("guest.addGuest")} </h4>
         <div className="row">
           <div className="input-field">
             <input
@@ -71,7 +76,7 @@ const AddGroupModal = ({ addGuest }) => {
               value={firstName}
               onChange={e => setFirstName(e.target.value)}
             />
-            <label htmlFor="firstName">שם פרטי </label>
+            <label htmlFor="firstName">{t("guest.firstName")} </label>
           </div>
         </div>
         <div className="row">
@@ -84,7 +89,7 @@ const AddGroupModal = ({ addGuest }) => {
               value={lastName}
               onChange={e => setLastName(e.target.value)}
             />
-            <label htmlFor="lastName">שם משפחה </label>
+            <label htmlFor="lastName">{t("guest.firstName")} </label>
           </div>
         </div>
 
@@ -98,7 +103,7 @@ const AddGroupModal = ({ addGuest }) => {
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
-            <label htmlFor="email">אימייל </label>
+            <label htmlFor="email">{t("guest.email")} </label>
           </div>
         </div>
 
@@ -111,7 +116,7 @@ const AddGroupModal = ({ addGuest }) => {
               onChange={e => setGroupName(e.target.value)}
             >
               <option value="" disabled>
-                בחר קבוצה
+                {t("guest.groupChoice")}
               </option>
               <option value="קבוצה1">קבוצה1</option>
               <option value="קבוצה2">קבוצה2</option>
@@ -130,11 +135,11 @@ const AddGroupModal = ({ addGuest }) => {
               onChange={e => setClassification(e.target.value)}
             >
               <option value="" disabled>
-                של מי האורח
+                {t("guest.guestClass.class")}
               </option>
-              <option value="משותף">משותף</option>
-              <option value="חתן">חתן</option>
-              <option value="כלה">כלה</option>
+              <option value="0"> {t("guest.guestClass.mutual")}</option>
+              <option value="1">{t("guest.guestClass.groom")}</option>
+              <option value="2">{t("guest.guestClass.bride")}</option>
               {/* <TechSelectOptions /> */}
             </select>
           </div>
@@ -150,7 +155,7 @@ const AddGroupModal = ({ addGuest }) => {
               value={comment}
               onChange={e => setComment(e.target.value)}
             />
-            <label htmlFor="comment">הערות</label>
+            <label htmlFor="comment">{t("guest.comments")}</label>
           </div>
         </div>
         <div className="row">
@@ -164,7 +169,7 @@ const AddGroupModal = ({ addGuest }) => {
                   value={attention}
                   onChange={e => setAttention(!attention)}
                 />
-                <span>דרושה התייחסות</span>
+                <span>{t("guest.attension")}</span>
               </label>
             </p>
           </div>
@@ -172,12 +177,12 @@ const AddGroupModal = ({ addGuest }) => {
       </div>
       <div className="modal-footer">
         <a
-        id="submit"
+          id="submit"
           href="#!"
-          className={"waves-effect blue waves-light btn" }
+          className={"waves-effect blue waves-light btn"}
           onClick={onSubmit}
         >
-          הכנס
+          {t("guest.enterGuest")}
         </a>
       </div>
     </div>

@@ -4,12 +4,14 @@ import GuestItem from "../guest/GuestItem";
 import Preloader from "../layout/Preloader";
 import { getGuests } from "../../redux/actions/guestActions";
 import SearchBar from "../layout/SearchBar";
+import { useTranslation } from "react-i18next";
 
 import PropTypes from "prop-types";
 
 import "./ListGuests.scss";
 
 const ListGuests = ({ guest: { guests, loading }, getGuests }) => {
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     getGuests();
@@ -24,13 +26,13 @@ const ListGuests = ({ guest: { guests, loading }, getGuests }) => {
     <div>
       <ul className="collection with-header get_guests">
         <li className="collection-header">
-          <h4 className="center">המוזמנים שלי</h4>
+          <h4 className="center"> {t("guests.myGuests")} </h4>
         </li>
         <li style={{ position: "relative", bottom: "1vh" }}>
           <SearchBar />
         </li>
         {!loading && guests.length === 0 ? (
-          <p className="center"> אין מוזמנים להצגה </p>
+          <p className="center">{t("guests.noGuests")} </p>
         ) : (
           guests.map(guest => <GuestItem guest={guest} key={guest.id} />)
         )}

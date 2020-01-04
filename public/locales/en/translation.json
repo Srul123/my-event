@@ -1,8 +1,50 @@
 {
-  "thanks": {
-    "1": "Thank me"
+  "searchBar": {
+    "searchGuests": "Search Guests..."
   },
-  "why": {
-    "1": "Cause I'm cool"
+  "navBar": {
+    "myGuestList": "My Guest List",
+    "myRSVPList": "My RSVP List",
+    "mySeatingList": "My Seating Plan List",
+    "lang": "languages"
+  },
+  "guests": {
+    "myGuests": "My Invited Guests",
+    "noGuests": " No Info"
+  },
+  "guest": {
+    "group": "Group",
+    "tableNum": "Table Number",
+    "DFL": "deleted from list",
+    "guest": "Guest invited",
+    "addGuest": "Enter a new guest",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "groupChoice": "Group Choice",
+    "guestClass": {
+      "class": "Who the guest belong",
+      "mutual": "Mutual",
+      "groom": "Groom",
+      "bride": "Bride"
+    },
+    "comments": "Comments",
+    "attension": "Need attension",
+    "success": "Added success",
+    "noGroup": "No group",
+    "alert": "Please insert a full name",
+    "alertSuccess": "The operation succeed",
+    "enterGuest": "Enter",
+    "editGuest": "Edit invited guest"
+  },
+  "group": {
+    "groupName": "Group Name",
+    "enterGroup": "Enter a group name",
+    "alert": "Please inser a name for the group",
+    "success": "Operation succeed",
+    "deleted": "Deleted from list"
+  },
+  "groups": {
+    "groups": "Groups"
   }
 }

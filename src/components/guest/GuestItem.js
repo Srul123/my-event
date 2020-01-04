@@ -1,18 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {deleteGuest, setCurrent} from '../../redux/actions/guestActions'
+import { deleteGuest, setCurrent } from "../../redux/actions/guestActions";
 import M from "materialize-css/dist/js/materialize.min.js";
-
+import { useTranslation } from "react-i18next";
 
 import "./GuestItem.scss";
 
 const GuestItem = ({ guest, deleteGuest, setCurrent }) => {
+  const { t, i18n } = useTranslation();
+
   const onDelte = () => {
     deleteGuest(guest.id);
 
     M.toast({
-      html: `המוזמן ${guest.firstName} נמחק מהרשימה`
+      html: `${t("guest.guest")} ${guest.firstName} ${t("guest.DFL")} `
     });
   };
 
@@ -29,8 +31,12 @@ const GuestItem = ({ guest, deleteGuest, setCurrent }) => {
           {guest.firstName + " " + guest.lastName}
         </a>
         <div className="details">
-          <span className="black-text">קבוצה: {guest.groupName}</span>
-          <span className="black-text">מספר שולחן: {guest.tableNumber}</span>
+          <span className="black-text">
+            {t("guest.group")}: {guest.groupName}
+          </span>
+          <span className="black-text">
+            {t("guest.tableNum")}: {guest.tableNumber}
+          </span>
           <a href="#" onClick={onDelte} className="secondary-content">
             <i className="material-icons grey-text">delete</i>
           </a>
