@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { updateGuest, setCurrent } from "../../redux/actions/guestActions";
 import { useTranslation } from "react-i18next";
+import GroupSelectOptions from "../groups/GroupSelectOptions";
+
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
@@ -133,10 +135,7 @@ const EditGuestModal = ({ current, updateGuest }) => {
               <option value="" disabled>
                 {t("guest.groupChoice")}
               </option>
-              <option value="קבוצה1">קבוצה1</option>
-              <option value="קבוצה2">קבוצה2</option>
-              <option value="קבוצה3">קבוצה3</option>
-              {/* <TechSelectOptions /> */}
+              <GroupSelectOptions />
             </select>
           </div>
         </div>
@@ -155,7 +154,6 @@ const EditGuestModal = ({ current, updateGuest }) => {
               <option value="0">{t("guest.guestClass.mutual")}</option>
               <option value="1">{t("guest.guestClass.groom")}</option>
               <option value="2">{t("guest.guestClass.bride")}</option>
-              {/* <TechSelectOptions /> */}
             </select>
           </div>
         </div>
