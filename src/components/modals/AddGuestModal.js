@@ -6,62 +6,67 @@ import { addGuest } from "../../redux/actions/guestActions";
 import { useTranslation } from "react-i18next";
 import GroupSelectOptions from "../groups/GroupSelectOptions";
 
-
 import M from "materialize-css/dist/js/materialize.min.js";
 
 const AddGuestModal = ({ addGuest }) => {
-
   const { t, i18n } = useTranslation();
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const [groupName, setGroupName] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [table, setTable] = useState("");
   const [classification, setClassification] = useState("");
-  const [comment, setComment] = useState("");
+  const [ride, setRide] = useState(false);
   const [attention, setAttention] = useState(false);
+  const [comment, setComment] = useState("");
 
   const onSubmit = () => {
-    if (firstName === "" || lastName === "") {
+    if (name === "") {
       return M.toast({
         html: `${t("guest.alert")}`,
         classes: "red"
       });
     } else {
-      const newGuest = {
-        firstName,
-        lastName,
-        phoneNumber,
-        groupName,
-        classification,
-        email,
-        comment,
-        attention,
-        created: new Date()
-      };
+             const newGuest = {
+               name,
+               phone,
+               address,
+               groupName,
+               quantity,
+               table,
+               classification,
+               ride,
+               attention,
+               comment
+             };
 
-      if (newGuest.groupName === "") {
-        newGuest.groupName = `${t("guest.noGroup")}`;
-      }
+             if (newGuest.groupName === "") {
+               newGuest.groupName = `${t("guest.noGroup")}`;
+             }
 
-      addGuest(newGuest);
+             addGuest(newGuest);
 
-      M.toast({
-        html: `${t("guest.guest")} ${newGuest.firstName} ${t("guest.success")}`,
-        classes: "green"
-      });
+             M.toast({
+               html: `${t("guest.guest")} ${newGuest.name} ${t(
+                 "guest.success"
+               )}`,
+               classes: "green"
+             });
 
-      // Clear Fields
-      setFirstName("");
-      setLastName("");
-      setPhoneNumber("");
-      setEmail("");
-      setGroupName("");
-      setClassification("");
-      setComment("");
-      setAttention(false);
-    }
+             // Clear Fields
+             setName("");
+             setPhone("");
+             setAddress("");
+             setGroupName("");
+             setQuantity(1);
+             setTable("");
+             setClassification("");
+             setRide(false);
+             setAttention(false);
+             setComment("");
+           }
   };
   return (
     <div id="add-guest-modal" className="modal" style={modalStyle}>
@@ -70,44 +75,42 @@ const AddGuestModal = ({ addGuest }) => {
         <div className="row">
           <div className="input-field">
             <input
-              id="firstName"
+              id="name"
               className="validate"
               type="text"
-              name="firstName"
-              value={firstName}
-              onChange={e => setFirstName(e.target.value)}
+              name="name"
+              value={name}
+              onChange={e => setName(e.target.value)}
             />
-            <label htmlFor="firstName">{t("guest.firstName")} </label>
+            <label htmlFor="name">{t("guest.name")} </label>
           </div>
         </div>
         <div className="row">
           <div className="input-field">
             <input
-              id="lastName"
+              id="phone"
               className="validate"
-              type="text"
-              name="lastName"
-              value={lastName}
-              onChange={e => setLastName(e.target.value)}
+              type="tel"
+              name="phone"
+              value={phone}
+              onChange={e => setPhone(e.target.value)}
             />
-            <label htmlFor="lastName">{t("guest.firstName")} </label>
+            <label htmlFor="phone">{t("guest.phone")} </label>
           </div>
         </div>
-
         <div className="row">
           <div className="input-field">
             <input
-              id="email"
+              id="address"
               className="validate"
-              type="email"
-              name="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              type="text"
+              name="address"
+              value={address}
+              onChange={e => setAddress(e.target.value)}
             />
-            <label htmlFor="email">{t("guest.email")} </label>
+            <label htmlFor="address">{t("guest.address")} </label>
           </div>
         </div>
-
         <div className="row">
           <div className="input-field">
             <select
@@ -121,6 +124,20 @@ const AddGuestModal = ({ addGuest }) => {
               </option>
               <GroupSelectOptions />
             </select>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="input-field">
+            <input
+              id="quantity"
+              className="validate"
+              type="number"
+              name="quantity"
+              value={quantity}
+              onChange={e => setQuantity(e.target.value)}
+            />
+            <label htmlFor="quantity">{t("guest.quantity")} </label>
           </div>
         </div>
 
@@ -153,6 +170,22 @@ const AddGuestModal = ({ addGuest }) => {
               onChange={e => setComment(e.target.value)}
             />
             <label htmlFor="comment">{t("guest.comments")}</label>
+          </div>
+        </div>
+        <div className="row">
+          <div className="input-field col s12">
+            <p>
+              <label>
+                <input
+                  type="checkbox"
+                  className="filled-in"
+                  checked={ride}
+                  value={ride}
+                  onChange={e => setRide(!ride)}
+                />
+                <span>{t("guest.ride")}</span>
+              </label>
+            </p>
           </div>
         </div>
         <div className="row">

@@ -148,11 +148,12 @@ export const setCurrent = (guest) =>  {
 };
 
 // Clear current guest
-export const clearCurrent = () => async dispatch => {
- return {
-   type: CLEAR_CURRENT,
- };
+export const clearCurrent = () => {
+  return {
+    type: CLEAR_CURRENT
+  };
 };
+
 
 
 

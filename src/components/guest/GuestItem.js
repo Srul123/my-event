@@ -8,13 +8,13 @@ import { useTranslation } from "react-i18next";
 import "./GuestItem.scss";
 
 const GuestItem = ({ guest, deleteGuest, setCurrent }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const onDelte = () => {
     deleteGuest(guest.id);
 
     M.toast({
-      html: `${t("guest.guest")} ${guest.firstName} ${t("guest.DFL")} `
+      html: `${t("guest.guest")} ${guest.name} ${t("guest.DFL")} `
     });
   };
 
@@ -28,14 +28,14 @@ const GuestItem = ({ guest, deleteGuest, setCurrent }) => {
           }`}
           onClick={() => setCurrent(guest)}
         >
-          {guest.firstName + " " + guest.lastName}
+          {guest.name}
         </a>
         <div className="details">
           <span className="black-text">
-            {t("guest.group")}: {guest.groupName}
+            {t("guest.group")}: {guest.group}
           </span>
           <span className="black-text">
-            {t("guest.tableNum")}: {guest.tableNumber}
+            {t("guest.tableNum")}: {guest.table}
           </span>
           <a href="#" onClick={onDelte} className="secondary-content">
             <i className="material-icons grey-text">delete</i>

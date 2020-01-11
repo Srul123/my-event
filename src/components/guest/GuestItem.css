@@ -1,9 +1,0 @@
-li#add-group-item .wrap-details div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-/*# sourceMappingURL=GuestItem.css.map */

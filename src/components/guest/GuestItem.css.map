@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAKQ,EALN,AAAA,eAAe,CACb,aAAa,CAIT,GAAG,CAAC;EACA,OAAO,EAAE,IAAI;EACZ,eAAe,EAAE,aAAa;CAClC",
-    "sources": [
-        "GuestItem.scss"
-    ],
-    "names": [],
-    "file": "GuestItem.css"
-}

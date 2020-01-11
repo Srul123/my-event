@@ -13,14 +13,15 @@
     "noGuests": " אין מוזמנים להצגה"
   },
   "guest": {
-    "group": "קבוצה",
+   "group": "קבוצה",
     "tableNum": "מספר שולחן",
     "DFL": "נמחק מהרשימה",
     "guest": "המוזמן",
     "addGuest": "הכנס מוזמן חדש",
-    "firstName": "שם פרטי",
-    "lastName": "שם משפחה",
-    "email": "אימייל",
+    "name": "שם",
+	"phone":"טלפון נייד",
+	"address":"כתובת",
+	"quantity":"כמות נלווים",
     "groupChoice": "בחר קבוצה",
     "guestClass": {
       "class": "של מי האורח",
@@ -28,6 +29,7 @@
       "groom": "צד החתן",
       "bride": "צד הכלה"
     },
+	"ride":"צריך הסעה?",
     "comments": "הערות",
     "attension": "דרושה התייחסות",
     "success": "נוסף בהצלחה",

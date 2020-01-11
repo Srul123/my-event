@@ -5,36 +5,39 @@ import { updateGuest, setCurrent } from "../../redux/actions/guestActions";
 import { useTranslation } from "react-i18next";
 import GroupSelectOptions from "../groups/GroupSelectOptions";
 
-
 import M from "materialize-css/dist/js/materialize.min.js";
 
 const EditGuestModal = ({ current, updateGuest }) => {
   const { t, i18n } = useTranslation();
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const [groupName, setGroupName] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [table, setTable] = useState("");
   const [classification, setClassification] = useState("");
-  const [comment, setComment] = useState("");
+  const [ride, setRide] = useState(false);
   const [attention, setAttention] = useState(false);
+  const [comment, setComment] = useState("");
 
   useEffect(() => {
     if (current) {
-      setFirstName(current.firstName);
-      setLastName(current.lastName);
-      setPhoneNumber(current.phoneNumber);
-      setEmail(current.email);
+      setName(current.name);
+      setPhone(current.phone);
+      setAddress(current.address);
       setGroupName(current.groupName);
+      setQuantity(current.quantity);
+      setTable(current.table);
       setClassification(current.classification);
-      setComment(current.comment);
+      setRide(current.ride);
       setAttention(current.attention);
+      setComment(current.comment);
     }
   }, [current]);
 
   const onSubmit = () => {
-    if (firstName === "" || lastName === "") {
+    if (name === "") {
       M.toast({
         html: `${t("guest.alert")}`,
         classes: "red"
@@ -42,16 +45,16 @@ const EditGuestModal = ({ current, updateGuest }) => {
     } else {
       const editGuest = {
         id: current.id,
-        firstName,
-        lastName,
-        phoneNumber,
+        name,
+        phone,
+        address,
         groupName,
+        quantity,
+        table,
         classification,
-        email,
-        comment,
+        ride,
         attention,
-        created: current.created,
-        lastEdited: new Date()
+        comment
       };
 
       updateGuest(editGuest);
@@ -60,7 +63,6 @@ const EditGuestModal = ({ current, updateGuest }) => {
         html: `${t("guest.alertSuccess")}`,
         classes: "green"
       });
-      
     }
   };
   return (
@@ -70,56 +72,36 @@ const EditGuestModal = ({ current, updateGuest }) => {
         <div className="row">
           <div className="input-field">
             <input
-              id="firstName-edit"
+              id="name-edit"
               type="text"
-              name="firstName"
-              value={firstName}
-              onChange={e => setFirstName(e.target.value)}
+              name="name"
+              value={name}
+              onChange={e => setName(e.target.value)}
             />
-          </div>
-        </div>
-        <div className="row">
-          <div className="input-field">
-            <input
-              id="lastName-edit"
-              type="text"
-              className="validate"
-              name="lastName"
-              value={lastName}
-              onChange={e => setLastName(e.target.value)}
-            />
-            {(() => {
-              if (current) {
-                return (
-                  <label
-                    htmlFor="lastName"
-                    className={(() => {
-                      if (current.lastName) {
-                        return "active";
-                      } else {
-                        return "";
-                      }
-                    })()}
-                  >
-                    {t("guest.lastName")}
-                  </label>
-                );
-              } else {
-                return null;
-              }
-            })()}
           </div>
         </div>
 
         <div className="row">
           <div className="input-field">
             <input
-              id="email-edit"
-              type="email"
-              name="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              placeholder={t("guest.email")}
+              id="phone-edit"
+              type="text"
+              name="phone"
+              value={phone}
+              onChange={e => setPhone(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="input-field">
+            <input
+              id="address"
+              className="validate"
+              type="text"
+              name="address"
+              value={address}
+              onChange={e => setAddress(e.target.value)}
             />
           </div>
         </div>
@@ -137,6 +119,19 @@ const EditGuestModal = ({ current, updateGuest }) => {
               </option>
               <GroupSelectOptions />
             </select>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="input-field">
+            <input
+              id="quantity-edit"
+              className="validate"
+              type="number"
+              name="quantity"
+              value={quantity}
+              onChange={e => setQuantity(e.target.value)}
+            />
           </div>
         </div>
 
@@ -167,6 +162,23 @@ const EditGuestModal = ({ current, updateGuest }) => {
               value={comment}
               onChange={e => setComment(e.target.value)}
             />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="input-field col s12">
+            <p>
+              <label>
+                <input
+                  type="checkbox"
+                  className="filled-in"
+                  checked={ride}
+                  value={ride}
+                  onChange={e => setRide(!ride)}
+                />
+                <span>{t("guest.ride")}</span>
+              </label>
+            </p>
           </div>
         </div>
 

@@ -17,8 +17,7 @@ const AddGroup = ({ addGroup }) => {
     } else {
       const newGroup = {
         name: groupName,
-        attention: false,
-        created: new Date()
+        attention: false
       };
 
       addGroup(newGroup);

@@ -1,83 +1,60 @@
 {
   "guests": [
     {
-      "id": 6,
-      "firstName": "Israel",
-      "lastName": "Heiblum",
-      "phoneNumber": "",
-      "groupName": "אחלה קבוצה",
+      "name": "Israel342323 ככ'ק",
+      "phone": "052532267",
+      "address": "אחלה קבוצה",
+      "quantity": "ih5938133@gmail.com",
+      "table": "",
+      "classification": 2,
+      "ride": true,
+      "attention": false,
+      "comment": "fsdfsdf",
+      "id": 1
+    },
+    {
+      "name": "מוטי בננה 1",
+      "phone": "0525322167",
+      "address": "Kibbutz Givat Brener",
+      "groupName": "ללא קבוצה",
+      "quantity": "",
+      "table": "",
       "classification": "",
-      "email": "ih5938133@gmail.com",
-      "comment": "",
-      "attention": false,
-      "created": "2020-01-04T18:59:01.564Z",
-      "lastEdited": "2020-01-05T19:43:16.256Z"
-    },
-    {
-      "id": 10,
-      "firstName": "שרול",
-      "lastName": "הייבלום",
-      "phoneNumber": "",
-      "groupName": "אחלה קבוצה",
-      "classification": "1",
-      "email": "ih5938133@gmail.com",
-      "comment": "כגד432",
-      "attention": false,
-      "created": "2020-01-04T19:36:27.841Z",
-      "lastEdited": "2020-01-05T19:42:44.195Z"
-    },
-    {
-      "id": 11,
-      "firstName": "Israel",
-      "lastName": "Heiblum",
-      "phoneNumber": "",
-      "groupName": "רקאקר",
-      "classification": "0",
-      "email": "ih5938133@gmail.com",
-      "comment": "",
+      "ride": false,
       "attention": true,
-      "created": "2020-01-05T19:07:33.164Z",
-      "lastEdited": "2020-01-05T19:42:30.814Z"
+      "comment": "",
+      "id": 4
     },
     {
-      "id": 12,
-      "firstName": "Israel",
-      "lastName": "Heiblum",
-      "phoneNumber": "",
-      "groupName": "אחלה קבוצה",
+      "name": "Israel Heiblum",
+      "phone": "0525322167",
+      "address": "Kibbutz Givat Brener",
+      "groupName": "ללא קבוצה",
+      "quantity": "",
+      "table": "",
       "classification": "",
-      "email": "ih5938133@gmail.com",
+      "ride": false,
+      "attention": true,
       "comment": "",
-      "attention": false,
-      "created": "2020-01-05T19:07:40.219Z",
-      "lastEdited": "2020-01-05T19:31:50.461Z"
-    },
-    {
-      "id": 13,
-      "firstName": "Israelעגכעגכ",
-      "lastName": "Heiblum",
-      "phoneNumber": "",
-      "groupName": "רקאקר",
-      "classification": "",
-      "email": "ih5938133@gmail.com",
-      "comment": "",
-      "attention": false,
-      "created": "2020-01-05T19:27:36.769Z",
-      "lastEdited": "2020-01-05T19:42:57.720Z"
+      "id": 6
     }
   ],
   "groups": [
     {
       "name": "רקאקר",
       "attention": false,
-      "created": "2020-01-05T19:08:21.987Z",
-      "id": 27
+      "date": "2020-01-05T19:08:21.987Z",
+      "id": 1
     },
     {
-      "name": "אחלה קבוצה",
+      "name": "bvcbc",
       "attention": false,
-      "created": "2020-01-05T19:31:42.058Z",
-      "id": 28
+      "id": 2
+    },
+    {
+      "name": "bcvb",
+      "attention": false,
+      "id": 3
     }
   ]
 }
