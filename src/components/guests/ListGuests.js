@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 import "./ListGuests.scss";
 
 const ListGuests = ({ guest: { guests, loading }, getGuests }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     getGuests();

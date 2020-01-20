@@ -28,15 +28,67 @@
     {
       "name": "Israel Heiblum",
       "phone": "0525322167",
-      "address": "Kibbutz Givat Brener",
+      "address": "",
       "groupName": "ללא קבוצה",
       "quantity": "",
       "table": "",
       "classification": "",
       "ride": false,
-      "attention": true,
+      "attention": false,
+      "comment": "",
+      "id": 5
+    },
+    {
+      "name": "Israel Heiblum",
+      "phone": "",
+      "address": "",
+      "groupName": "bvcbc",
+      "quantity": "",
+      "table": "",
+      "classification": "0",
+      "ride": false,
+      "attention": false,
       "comment": "",
       "id": 6
+    },
+    {
+      "name": "Israel Heiblum",
+      "phone": "",
+      "address": "",
+      "groupName": "ללא קבוצה",
+      "quantity": 1,
+      "table": "",
+      "classification": "",
+      "ride": false,
+      "attention": false,
+      "comment": "",
+      "id": 7
+    },
+    {
+      "name": "Israel Heiblum",
+      "phone": "",
+      "address": "",
+      "groupName": "ללא קבוצה",
+      "quantity": "",
+      "table": "",
+      "classification": "",
+      "ride": false,
+      "attention": false,
+      "comment": "",
+      "id": 8
+    },
+    {
+      "id": 9,
+      "name": "Israel Heiblum",
+      "phone": "0525322167",
+      "address": "Kibbutz Givat Brener",
+      "groupName": "bvcbc",
+      "quantity": 1,
+      "table": "",
+      "classification": "0",
+      "ride": false,
+      "attention": false,
+      "comment": ""
     }
   ],
   "groups": [
@@ -47,14 +99,19 @@
       "id": 1
     },
     {
-      "name": "bvcbc",
-      "attention": false,
-      "id": 2
-    },
-    {
       "name": "bcvb",
       "attention": false,
       "id": 3
+    },
+    {
+      "name": "gdf",
+      "attention": false,
+      "id": 6
+    },
+    {
+      "name": "gdfgfd",
+      "attention": false,
+      "id": 9
     }
   ]
 }

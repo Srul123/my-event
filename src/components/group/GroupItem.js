@@ -6,7 +6,7 @@ import M from "materialize-css/dist/js/materialize.min.js";
 import { useTranslation } from "react-i18next";
 
 const GroupItem = ({ group, deleteGroup }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const onDelete = () => {
     deleteGroup(group.id);
@@ -25,7 +25,7 @@ const GroupItem = ({ group, deleteGroup }) => {
           }}
         >
           <span className="black-text"> {group.name}</span>
-          <a href="#" onClick={onDelete} className="secondary-content">
+          <a onClick={onDelete} className="secondary-content">
             <i className="material-icons grey-text">delete</i>
           </a>
         </div>

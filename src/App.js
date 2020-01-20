@@ -1,35 +1,44 @@
 import React, { Fragment, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-import Navbar from "./components/layout/Navbar";
-import Home from "./pages/Home/Home";
-import About from "./pages/About/About";
-import MyListGuests from "./pages/MyListGuests/MyListGuests";
-
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from "react-router-dom";
+import MyListGuests from "./components/pages/MyListGuests";
+import Home from "./components/pages/Home";
+import SignIn from "./components/pages/SignIn";
+import SignUp from "./components/pages/SignUp";
+import ForgotPassword from "./components/pages/ForgotPassword";
 
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
-import "./App.css";
 import "materialize-css/dist/css/materialize.min.css";
+import M from "materialize-css/dist/js/materialize.min.js";
 
+import Navbar from "./components/layout/Navbar";
+import AppAppBar from "./components/material-ui-modules/views/AppAppBar";
 
-const App = () => {
+const App = props => {
+  const { match } = props;
 
+  useEffect(() => {
 
-
+    // Init Materialize JS
+    M.AutoInit();
+  });
   return (
     <Provider store={store}>
       <Router>
         <Fragment>
-          <Navbar />
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/my-list" component={MyListGuests} />
-            </Switch>
-          </div>
+          <AppAppBar />
+          <Switch>
+            <Route path={"/my-list"} exact component={MyListGuests} />
+            <Route path={"/sign-in"} exact component={SignIn} />
+            <Route path={"/sign-up"} component={SignUp} />
+            <Route path={"/forgot-password"} exact component={ForgotPassword} />
+            <Route path={"/"} exact component={Home} />
+          </Switch>
         </Fragment>
       </Router>
     </Provider>

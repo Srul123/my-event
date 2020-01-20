@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { connect } from "react-redux";
 import { addGroup } from "../../redux/actions/groupActions";
 import M from "materialize-css/dist/js/materialize.min.js";
 import { useTranslation } from "react-i18next";
 
 const AddGroup = ({ addGroup }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [groupName, setGroupName] = useState("");
 

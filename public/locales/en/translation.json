@@ -1,4 +1,23 @@
 {
+  "home": {},
+  "sign-up": {
+    "title": "SIGN UP",
+    "alreadyHave": "Already have an account?",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email ",
+    "password": "Password ",
+    "regsitry": "SIGN UP"
+  },
+  "sign-in": {
+    "title": "SIGN IN",
+    "member": "Not a member yet?",
+    "sign-up": "Sign Up here",
+    "email": "Email",
+    "password": "Password",
+    "in": "SIGN IN",
+    "forgot": "Forgot password?"
+  },
   "searchBar": {
     "searchGuests": "Search Guests..."
   },
