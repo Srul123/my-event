@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {getGroups} from "../../redux/actions/groupActions";
 import Preloader from "../../components/layout/Preloader";
@@ -46,20 +46,7 @@ const ListGroups = ({group: {groups, loading, filtered}, getGroups}) => {
     );
 };
 
-{/*{filtered !== null || groups!== null*/
-}
-{/*    ? filtered.map(group => (*/
-}
-{/*        <GroupItem group={group} key={group.id}/>*/
-}
-{/*    ))*/
-}
-{/*    : currGroups.map(group => (*/
-}
-{/*        <GroupItem group={group} key={group.id}/>)*/
-}
-{/*    )}*/
-}
+
 const mapStateToProps = state => ({
     group: state.group
 });

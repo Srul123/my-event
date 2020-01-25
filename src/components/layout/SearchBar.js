@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import "./SearchBar.scss";
 
 const SearchBar = ({ searchGuests }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const text = useRef("");
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import GuestItem from "../guest/GuestItem";
 import Preloader from "../layout/Preloader";

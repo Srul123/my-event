@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { updateGuest, setCurrent } from "../../redux/actions/guestActions";
+import { updateGuest } from "../../redux/actions/guestActions";
 import { useTranslation } from "react-i18next";
 import GroupSelectOptions from "../groups/GroupSelectOptions";
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
 const EditGuestModal = ({ current, updateGuest }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
