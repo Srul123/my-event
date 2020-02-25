@@ -11,7 +11,6 @@ import {
 } from "./types";
 
 import setAuthToken from "../../utils/setAuthToken";
-
 import {baseURL} from './apiURL';
 
 
@@ -66,11 +65,12 @@ export const register = formData => async dispatch => {
     const config = {
       headers: {
         "Content-Type": "application/json"
+        // "Access-Control-Allow-Origin": "*"
       }
     };
 
     try {
-      const res = await axios.post("/api/auth", formData, config);
+      const res = await axios.post(`${baseURL}/api/auth`, formData, config);
 
       dispatch({
         type: LOGIN_SUCCESS,
@@ -81,7 +81,7 @@ export const register = formData => async dispatch => {
     } catch (err) {
       dispatch({
         type: LOGIN_FAIL,
-        payload: err.response.data.msg
+        payload: err.response
       });
     }
   };

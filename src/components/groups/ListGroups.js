@@ -14,8 +14,6 @@ const ListGroups = ({group: {groups, loading, filtered}, getGroups}) => {
     useEffect(() => {
         getGroups();
         //eslint-disable-next-line
-        // setCurrGroups(groups);
-
     }, []);
 
     if (loading) {

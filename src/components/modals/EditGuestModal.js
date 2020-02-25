@@ -13,7 +13,7 @@ const EditGuestModal = ({ current, updateGuest }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [groupName, setGroupName] = useState("");
+  const [group, setGroup] = useState("");
   const [quantity, setQuantity] = useState("");
   const [table, setTable] = useState("");
   const [classification, setClassification] = useState("");
@@ -26,7 +26,7 @@ const EditGuestModal = ({ current, updateGuest }) => {
       setName(current.name);
       setPhone(current.phone);
       setAddress(current.address);
-      setGroupName(current.groupName);
+      setGroup(current.group);
       setQuantity(current.quantity);
       setTable(current.table);
       setClassification(current.classification);
@@ -44,11 +44,11 @@ const EditGuestModal = ({ current, updateGuest }) => {
       });
     } else {
       const editGuest = {
-        id: current.id,
+        id: current._id,
         name,
         phone,
         address,
-        groupName,
+        group,
         quantity,
         table,
         classification,
@@ -56,7 +56,9 @@ const EditGuestModal = ({ current, updateGuest }) => {
         attention,
         comment
       };
-
+      console.log("editGuest,id");
+      console.log(editGuest.id);
+      
       updateGuest(editGuest);
 
       M.toast({
@@ -109,10 +111,10 @@ const EditGuestModal = ({ current, updateGuest }) => {
         <div className="row">
           <div className="input-field">
             <select
-              name="groupName"
-              value={groupName}
+              name="group"
+              value={group}
               className="browser-default"
-              onChange={e => setGroupName(e.target.value)}
+              onChange={e => setGroup(e.target.value)}
             >
               <option value="" disabled>
                 {t("guest.groupChoice")}

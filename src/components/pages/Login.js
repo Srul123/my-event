@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { login } from "../../redux/actions/authActions";
 import { useHistory } from "react-router-dom";
 
-const Login = ({ props, auth, login, setAlert }) => {
+const Login = ({auth, login, setAlert }) => {
   const history = useHistory();
 
   const { error, isAuthenticated } = auth;

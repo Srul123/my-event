@@ -13,12 +13,13 @@ import SignUp from "./components/pages/SignUp";
 import ForgotPassword from "./components/pages/ForgotPassword";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
+import PrivateRoute from "./components/routing/PrivateRoute";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import "materialize-css/dist/css/materialize.min.css";
 import M from "materialize-css/dist/js/materialize.min.js";
 
-// import Navbar from "./components/layout/Navbar";
+import Navbar from "./components/layout/Navbar";
 import AppAppBar from "./components/material-ui-modules/views/AppAppBar";
 
 const App = props => {
@@ -27,15 +28,16 @@ const App = props => {
 
     // Init Materialize JS
     M.AutoInit();
-  });
+  }, []);
   return (
     <Provider store={store}>
       <Router>
         <Fragment>
-          <AppAppBar />
+          {/*<AppAppBar />*/}
+          <Navbar />
           <Alerts />
           <Switch>
-            <Route path={"/"} exact component={Home} />
+            <PrivateRoute path={"/"} exact component={Home} />
             {/*<div className="container">*/}
               <Route path={"/my-list"} exact component={MyListGuests} />
               <Route path={"/sign-in"} exact component={SignIn} />

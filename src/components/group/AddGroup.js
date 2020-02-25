@@ -5,16 +5,19 @@ import M from "materialize-css/dist/js/materialize.min.js";
 import { useTranslation } from "react-i18next";
 
 const AddGroup = ({ addGroup }) => {
+
   const { t } = useTranslation();
 
   const [groupName, setGroupName] = useState("");
 
   const onSubmit = () => {
     if (groupName === "") {
-      M.toast({
+       return M.toast({
         html: `${t("group.alert")}`
       });
     } else {
+      console.log("groupName");
+      console.log(groupName);
       const newGroup = {
         name: groupName,
         attention: false

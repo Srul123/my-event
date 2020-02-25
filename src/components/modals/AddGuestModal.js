@@ -6,6 +6,7 @@ import {useTranslation} from "react-i18next";
 import GroupSelectOptions from "../groups/GroupSelectOptions";
 
 import M from "materialize-css/dist/js/materialize.min.js";
+import {Link} from "react-router-dom";
 
 const AddGuestModal = ({addGuest}) => {
     useEffect(() => {
@@ -18,7 +19,7 @@ const AddGuestModal = ({addGuest}) => {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
-    const [groupName, setGroupName] = useState("");
+    const [group, setGroup] = useState("");
     const [quantity, setQuantity] = useState("");
     const [table, setTable] = useState("");
     const [classification, setClassification] = useState("");
@@ -27,6 +28,7 @@ const AddGuestModal = ({addGuest}) => {
     const [comment, setComment] = useState("");
 
     const onSubmit = () => {
+
         if (name === "") {
             return M.toast({
                 html: `${t("guest.alert")}`,
@@ -37,20 +39,23 @@ const AddGuestModal = ({addGuest}) => {
                 name,
                 phone,
                 address,
-                groupName,
+                group: "5e165d6bb139097550d6d1d1", // todo go back
                 quantity,
-                table,
+                table: null, // todo go back
                 classification,
                 ride,
                 attention,
                 comment
             };
+            console.log( "newGuest");
 
-            if (newGuest.groupName === "") {
-                newGuest.groupName = `${t("guest.noGroup")}`;
+            console.log( newGuest);
+
+            if (newGuest.group === "") {
+                newGuest.group = `${t("guest.noGroup")}`;
             }
-
             addGuest(newGuest);
+            console.log("after add guest");
 
             M.toast({
                 html: `${t("guest.guest")} ${newGuest.name} ${t(
@@ -63,7 +68,7 @@ const AddGuestModal = ({addGuest}) => {
             setName("");
             setPhone("");
             setAddress("");
-            setGroupName("");
+            setGroup("");
             setQuantity(1);
             setTable("");
             setClassification("");
@@ -118,10 +123,10 @@ const AddGuestModal = ({addGuest}) => {
                 <div className="row">
                     <div className="input-field">
                         <select
-                            name="groupName"
-                            value={groupName}
+                            name="group"
+                            value={group}
                             className="browser-default"
-                            onChange={e => setGroupName(e.target.value)}
+                            onChange={e => setGroup(e.target.value)}
                         >
                             <option value="" disabled>
                                 {t("guest.groupChoice")}
@@ -210,22 +215,21 @@ const AddGuestModal = ({addGuest}) => {
                 </div>
             </div>
             <div className="modal-footer">
-                <a
+                <Link
                     id="submit"
-                    href="#!"
                     className={"waves-effect blue waves-light btn"}
                     onClick={onSubmit}
                 >
                     {t("guest.enterGuest")}
-                </a>
+                </Link>
             </div>
         </div>
     );
 };
 
-AddGuestModal.propTypes = {
-    addGuest: PropTypes.func.isRequired
-};
+// AddGuestModal.propTypes = {
+//     addGuest: PropTypes.func.isRequired
+// };
 
 const modalStyle = {
     width: "60%",

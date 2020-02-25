@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import {
     GET_GROUPS,
     ADD_GROUP,
@@ -11,11 +13,16 @@ import {
   CLEAR_FILTER
 } from "./types";
 
+import {baseURL} from  "./apiURL";
+
+
 export const getGroups = () => async dispatch => {
+
     try {
         setLoading();
-        const response = await fetch("/groups");
-        const data = await response.json();
+        const response = await axios.get(`${baseURL}/api/groups`);
+        const data =  response.data;
+        console.log("getGroups");
 
         dispatch({
             type: GET_GROUPS,
@@ -24,24 +31,26 @@ export const getGroups = () => async dispatch => {
     } catch (error) {
         dispatch({
             type: GROUPS_ERROR,
-            payload: error.response.data
+            payload: error
         });
     }
 };
 
 // Add new group
 export const addGroup = group => async dispatch => {
+    console.log("group from action");
+    console.log(group);
+
+    const config = {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    };
     try {
         setLoading();
 
-        const response = await fetch("/groups", {
-            method: "POST",
-            body: JSON.stringify(group),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-        const data = await response.json();
+        const response = await axios.post(`${baseURL}/api/groups`, group, config);
+        const data =  response.data;
 
         dispatch({
             type: ADD_GROUP,
@@ -50,7 +59,7 @@ export const addGroup = group => async dispatch => {
     } catch (error) {
         dispatch({
             type: GROUPS_ERROR,
-            payload: error.response.data
+            payload: error.response
         });
     }
 };
@@ -60,9 +69,7 @@ export const deleteGroup = id => async dispatch => {
     try {
         setLoading();
 
-        await fetch(`/groups/${id}`, {
-            method: "DELETE"
-        });
+        await axios.delete(`${baseURL}/api/groups/${id}`);
 
         dispatch({
             type: DELETE_GROUP,
@@ -81,7 +88,7 @@ export const updateGroup = group => async dispatch => {
     try {
         setLoading();
 
-        const response = await fetch(`/groups/${group.id}`, {
+        const response = await fetch(`${baseURL}/api/groups/${group.id}`, {
             method: "PUT",
             body: JSON.stringify(group),
             headers: {

@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import {
   ADD_GUEST,
   SET_LOADING,
@@ -10,6 +12,7 @@ import {
   SEARCH_GUESTS
 } from "./types";
 
+import { baseURL } from "./apiURL";
 // export const getGuests = () => {
 //     return async (dispatch) => {
 //         setLoading();
@@ -30,8 +33,12 @@ export const getGuests = () => async dispatch => {
   try {
     setLoading();
 
-    const response = await fetch("/guests");
-    const data = await response.json();
+    const response = await axios.get(`${baseURL}/api/guests`);
+    console.log("response");
+    console.log(response);
+
+    const data = response.data;
+    console.log(data);
 
     dispatch({
       type: GET_GUESTS,
@@ -40,24 +47,27 @@ export const getGuests = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: GUESTS_ERROR,
-      payload: error.response.data
+      payload: error
     });
   }
 };
 
 // Add new guest
 export const addGuest = guest => async dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
   try {
     setLoading();
-
-    const response = await fetch("/guests", {
-      method: "POST",
-      body: JSON.stringify(guest),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
-    const data = await response.json();
+    console.log("guest:");
+    console.log(guest);
+    const response = await axios.post(`${baseURL}/api/guests`, guest, config);
+    console.log("response from add user");
+    console.log(response);
+    const data = response.data;
 
     dispatch({
       type: ADD_GUEST,
@@ -66,7 +76,7 @@ export const addGuest = guest => async dispatch => {
   } catch (error) {
     dispatch({
       type: GUESTS_ERROR,
-      payload: error.response.data
+      payload: error.response
     });
   }
 };
@@ -76,7 +86,7 @@ export const deleteGuest = id => async dispatch => {
   try {
     setLoading();
 
-    await fetch(`/guests/${id}`, {
+    await axios.delete(`${baseURL}/api/guests/${id}`, {
       method: "DELETE"
     });
 
@@ -87,25 +97,32 @@ export const deleteGuest = id => async dispatch => {
   } catch (error) {
     dispatch({
       type: GUESTS_ERROR,
-      payload: error.response.data
+      payload: error.response
     });
   }
 };
 
 // Update  guest on server
 export const updateGuest = guest => async dispatch => {
+    console.log("guest edit");
+    console.log(guest);
+    
   try {
     setLoading();
 
-    const response = await fetch(`/guests/${guest.id}`, {
-      method: "PUT",
-      body: JSON.stringify(guest),
+    const config = {
       headers: {
         "Content-Type": "application/json"
       }
-    });
+    };
 
-    const data = await response.json();
+    const response = await axios.put(
+      `${baseURL}/api/guests/${guest.id}`,
+      guest,
+      config
+    );
+
+    const data =  response.data;
 
     dispatch({
       type: UPDATE_GUEST,
@@ -114,17 +131,17 @@ export const updateGuest = guest => async dispatch => {
   } catch (error) {
     dispatch({
       type: GUESTS_ERROR,
-      payload: error.response.data
+      payload: error.response
     });
   }
 };
 
 // Search guest
-export const searchGuests = (text) => async dispatch => {
+export const searchGuests = text => async dispatch => {
   try {
     setLoading();
 
-    const response = await fetch(`/guests?q=${text}`);
+    const response = await fetch(`/api/guests?q=${text}`);
     const data = await response.json();
 
     dispatch({
@@ -140,11 +157,11 @@ export const searchGuests = (text) => async dispatch => {
 };
 
 // Set current guest
-export const setCurrent = (guest) =>  {
- return {
-     type: SET_CURRENT,
-     payload: guest
- };
+export const setCurrent = guest => {
+  return {
+    type: SET_CURRENT,
+    payload: guest
+  };
 };
 
 // Clear current guest
@@ -153,9 +170,6 @@ export const clearCurrent = () => {
     type: CLEAR_CURRENT
   };
 };
-
-
-
 
 // Set loading to true
 export const setLoading = () => {

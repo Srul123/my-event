@@ -71,7 +71,7 @@ export default (state = intialState, action) => {
                 loading: false
             };
         case GROUPS_ERROR:
-            console.error("**Your Error: " + action.payload);
+            console.error("**Your Error123: " + action.payload);
             return {
                 ...state,
                 error: action.payload
